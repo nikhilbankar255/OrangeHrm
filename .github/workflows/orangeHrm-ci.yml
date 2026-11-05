@@ -1,27 +1,31 @@
+
 name: OrangeHrm Automation CI
 
 # Workflow triggers
-on: 
+on:
   push:
-  branches:
-    - main
-    pull_request:
-      branches:
-        - main
-        workflow_dispatch:
+    branches:
+      - main
 
-        #Github runner permissions
-        permissions:
-          contents: read
+  pull_request:
+    branches:
+      - main
 
-          jobs:
-            selenium-test:
+  workflow_dispatch:
 
-            # Operating system
-            runs-on: ubuntu-latest
+# GitHub runner permissions
+permissions:
+  contents: read
 
-            # Maximum execution time
+jobs:
+  selenium-test:
+
+    # Operating system
+    runs-on: ubuntu-latest
+
+    # Maximum execution time
     timeout-minutes: 30
+
     steps:
 
       # 1. Checkout source code
